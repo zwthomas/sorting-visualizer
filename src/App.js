@@ -6,7 +6,7 @@ import Visualizer from "./components/visualizer/Visualizer";
 function App() {
   return (
     <div className="App">
-      <Visualizer />
+      <Visualizer numBars={100}/>
     </div>
   );
 }

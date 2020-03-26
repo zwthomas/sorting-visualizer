@@ -7,7 +7,7 @@ import { useEffect } from "react";
 class Visualizer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { percents: [ 60, 50,90, 30] };
+    this.state = { percents: Array.from({length: props.numBars}, () => Math.random() * 100) };
 
     this.bubbleSort = this.bubbleSort.bind(this);
   }
@@ -25,7 +25,7 @@ class Visualizer extends React.Component {
           newArray[j] = newArray[j + 1];
           newArray[j + 1] = temp;
           this.setState(newArray);
-          await this.sleep(500)
+          await this.sleep(1000/this.props.numBars)
         }
       }
     }
