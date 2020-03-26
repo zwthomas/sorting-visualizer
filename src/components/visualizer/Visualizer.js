@@ -1,34 +1,18 @@
 import "./Visualizer.css";
-import React, { useState } from "react";
+import React from "react";
 
 import Bar from "./../bar/Bar";
-import { useEffect } from "react";
+import { bubbleSort } from "./../../helper/sortHelper"
 
 class Visualizer extends React.Component {
   constructor(props) {
     super(props);
     this.state = { percents: Array.from({length: props.numBars}, () => Math.random() * 100) };
-
-    this.bubbleSort = this.bubbleSort.bind(this);
-  }
-  sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+    this.updateArray = this.updateArray.bind(this);
   }
 
-  async bubbleSort() {
-    let newArray = this.state.percents;
-
-    for (let i = 0; i < newArray.length; i++) {
-      for (let j = 0; j < newArray.length; j++) {
-        if (newArray[j] > newArray[j+1]) {
-          let temp = newArray[j];
-          newArray[j] = newArray[j + 1];
-          newArray[j + 1] = temp;
-          this.setState(newArray);
-          await this.sleep(1000/this.props.numBars)
-        }
-      }
-    }
+  updateArray(newArray) {
+    this.setState(newArray)
   }
 
   render() {
@@ -41,7 +25,7 @@ class Visualizer extends React.Component {
         </div>
         <button
           onClick={() => {
-            this.bubbleSort();
+            bubbleSort(this.state.percents, this.updateArray, this.props.numBars);
           }}
         >
           Sort
