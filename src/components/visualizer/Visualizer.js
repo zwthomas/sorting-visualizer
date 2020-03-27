@@ -2,7 +2,7 @@ import "./Visualizer.css";
 import React from "react";
 
 import Bar from "./../bar/Bar";
-import { bubbleSort } from "./../../helper/sortHelper"
+import { bubbleSort, mergeSort } from "./../../helper/sortHelper"
 
 class Visualizer extends React.Component {
   constructor(props) {
@@ -19,13 +19,13 @@ class Visualizer extends React.Component {
     return (
       <div className="temp">
         <div className="container">
-          {this.state.percents.map(function(percent) {
-            return <Bar percent={percent} />;
+          {this.state.percents.map(function(percent, index) {
+            return <Bar key={index} percent={percent} />;
           })}
         </div>
         <button
           onClick={() => {
-            bubbleSort(this.state.percents, this.updateArray, this.props.numBars);
+            mergeSort(this.state.percents, this.updateArray, this.props.numBars);
           }}
         >
           Sort
