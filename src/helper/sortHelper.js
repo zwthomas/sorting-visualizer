@@ -16,17 +16,25 @@ export async function bubbleSort(percents, updateArray, numBars) {
 
 let aux = [];
 let setState
+let queue = []
+let speed = 10
+
 
 export async function mergeSort(percents, updateArray, numBars) {
-  // debugger;
-  let newArray = percents;
-  setState = updateArray
+  mSort(percents, 0, percents.length - 1);
+  debugger;
 
-  mSort(newArray, 0, newArray.length - 1);
+  let bars = document.getElementsByClassName("bar");
+  for (let ndx = 0; ndx < queue.length; ndx++) {
+    let change = queue[ndx];
+    
+    setTimeout(() => {
+      bars[change[0]].style.height = `${change[1]}%`
+    }, ndx * speed)
+  }
 }
 
-async function mSort(percents, low, high) {
-  // debugger;
+function mSort(percents, low, high) {
   if (high <= low) return;
   let mid = low + Math.floor((high - low) / 2);
   mSort(percents, low, mid);
@@ -34,22 +42,20 @@ async function mSort(percents, low, high) {
   merge(percents, low, mid, high);
 }
 
-async function merge(percents, low, mid, high) {
-  debugger;
+function merge(percents, low, mid, high) {
   let i = low, j = mid + 1;
   for (let k = low; k <= high; k++) {
     aux[k] = percents[k];
   }
 
+  let change;
   for (let k = low; k <= high; k++) {
-    debugger;
-    if (i > mid)                percents[k] = aux[j++];
-    else if (j > high)          percents[k] = aux[i++];
-    else if (aux[j] < aux[i])   percents[k] = aux[j++];
-    else                        percents[k] = aux[i++];
-    
-    setState(percents)
-    // await sleep(100);
+    if (i > mid)                change = aux[j++];
+    else if (j > high)          change = aux[i++];
+    else if (aux[j] < aux[i])   change = aux[j++];
+    else                        change = aux[i++];
+    percents[k] = change;
+    queue.push([k, change]);
   }
 }
 
