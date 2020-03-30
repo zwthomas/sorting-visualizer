@@ -2,7 +2,7 @@ import "./Visualizer.css";
 import React from "react";
 
 import Bar from "./../bar/Bar";
-import { bubbleSort, mergeSort } from "./../../helper/sortHelper"
+import { bubbleSort, mergeSort, quickSort } from "./../../helper/sortHelper"
 
 class Visualizer extends React.Component {
   constructor(props) {
@@ -25,7 +25,7 @@ class Visualizer extends React.Component {
         </div>
         <button
           onClick={() => {
-            mergeSort(this.state.percents, this.updateArray, this.props.numBars);
+            quickSort(this.state.percents);
           }}
         >
           Sort
