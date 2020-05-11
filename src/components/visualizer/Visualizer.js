@@ -25,7 +25,7 @@ class Visualizer extends React.Component {
         </div>
         <button
           onClick={() => {
-            quickSort(this.state.percents);
+            mergeSort(this.state.percents);
           }}
         >
           Sort
