@@ -93,12 +93,7 @@ class Visualizer extends React.Component {
               return <Bar key={index} percent={percent} />;
             })}
           </div>
-          <button
-            onClick={() => {
-            }}
-          >
-            Sort
-        </button>
+          
         </div>
       </div>
     );

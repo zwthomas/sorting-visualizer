@@ -1,8 +1,7 @@
 .container {
     display: flex;
     position: relative;
-    background: grey;
-    width: 500px;
+    width: 90%;
     height: 500px;
     align-items: flex-end;
     margin: auto;

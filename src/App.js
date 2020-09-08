@@ -14,8 +14,6 @@ function App() {
   return (
     <div className="App">
 
-      
-
       <Visualizer numBars={100} />
     </div>
   );
