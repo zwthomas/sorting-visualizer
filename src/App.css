@@ -6,6 +6,21 @@
   height: 40vmin;
   pointer-events: none;
 }
+.title {
+  color: white
+}
+.actions {
+  position: absolute;
+  right: 5%;
+  display: flex
+}
+
+.sortSelect, .sort, .reset {
+  margin-left: 5%;
+}
+
+
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

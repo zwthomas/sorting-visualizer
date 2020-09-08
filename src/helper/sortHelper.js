@@ -21,6 +21,9 @@ let queue = [];
 let speed = 10;
 
 export async function mergeSort(percents, updateArray, numBars) {
+  aux = [];
+  queue = [];
+  speed = 10;
   mSort(percents, 0, percents.length - 1);
   debugger;
 
@@ -30,6 +33,10 @@ export async function mergeSort(percents, updateArray, numBars) {
 
     setTimeout(() => {
       bars[change[0]].style.height = `${change[1]}%`;
+      if (ndx == queue.length - 1) {
+        let disableResetButton = document.getElementById("resetButton");  
+        disableResetButton.removeAttribute("disabled");    
+      }
     }, ndx * speed);
   }
 }
@@ -61,6 +68,9 @@ function merge(percents, low, mid, high) {
 }
 
 export function quickSort(percents) {
+  aux = [];
+  queue = [];
+  speed = 10;
   qSort(percents, 0, percents.length - 1);
   debugger;
   let bars = document.getElementsByClassName("bar");
@@ -74,6 +84,10 @@ export function quickSort(percents) {
     } else {
       setTimeout(() => {
         bars[change[0]].style.height = `${change[1]}%`;
+        if (ndx == queue.length - 1) {
+          let disableResetButton = document.getElementById("resetButton");  
+          disableResetButton.removeAttribute("disabled");    
+        }
       }, ndx * speed);
     }
   }
